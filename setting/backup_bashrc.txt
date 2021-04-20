@@ -1,0 +1,275 @@
+###### ORIGINAL ######
+# ~/.bashrc: executed by bash(1) for non-login shells.
+# see /usr/share/doc/bash/examples/startup-files (in the package bash-doc)
+# for examples
+
+# If not running interactively, don't do anything
+case $- in
+    *i*) ;;
+      *) return;;
+esac
+
+# don't put duplicate lines or lines starting with space in the history.
+# See bash(1) for more options
+HISTCONTROL=ignoreboth
+
+# append to the history file, don't overwrite it
+shopt -s histappend
+
+# for setting history length see HISTSIZE and HISTFILESIZE in bash(1)
+HISTSIZE=1000
+HISTFILESIZE=2000
+
+# check the window size after each command and, if necessary,
+# update the values of LINES and COLUMNS.
+shopt -s checkwinsize
+
+# If set, the pattern "**" used in a pathname expansion context will
+# match all files and zero or more directories and subdirectories.
+#shopt -s globstar
+
+# make less more friendly for non-text input files, see lesspipe(1)
+[ -x /usr/bin/lesspipe ] && eval "$(SHELL=/bin/sh lesspipe)"
+
+# set variable identifying the chroot you work in (used in the prompt below)
+if [ -z "${debian_chroot:-}" ] && [ -r /etc/debian_chroot ]; then
+    debian_chroot=$(cat /etc/debian_chroot)
+fi
+
+# set a fancy prompt (non-color, unless we know we "want" color)
+case "$TERM" in
+    xterm-color|*-256color) color_prompt=yes;;
+esac
+
+# uncomment for a colored prompt, if the terminal has the capability; turned
+# off by default to not distract the user: the focus in a terminal window
+# should be on the output of commands, not on the prompt
+#force_color_prompt=yes
+
+if [ -n "$force_color_prompt" ]; then
+    if [ -x /usr/bin/tput ] && tput setaf 1 >&/dev/null; then
+	# We have color support; assume it's compliant with Ecma-48
+	# (ISO/IEC-6429). (Lack of such support is extremely rare, and such
+	# a case would tend to support setf rather than setaf.)
+	color_prompt=yes
+    else
+	color_prompt=
+    fi
+fi
+
+if [ "$color_prompt" = yes ]; then
+    PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$ '
+else
+    PS1='${debian_chroot:+($debian_chroot)}\u@\h:\w\$ '
+fi
+unset color_prompt force_color_prompt
+
+# If this is an xterm set the title to user@host:dir
+case "$TERM" in
+xterm*|rxvt*)
+    PS1="\[\e]0;${debian_chroot:+($debian_chroot)}\u@\h: \w\a\]$PS1"
+    ;;
+*)
+    ;;
+esac
+
+# enable color support of ls and also add handy aliases
+if [ -x /usr/bin/dircolors ]; then
+    test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
+    alias ls='ls --color=auto'
+    #alias dir='dir --color=auto'
+    #alias vdir='vdir --color=auto'
+
+    alias grep='grep --color=auto'
+    alias fgrep='fgrep --color=auto'
+    alias egrep='egrep --color=auto'
+fi
+
+# colored GCC warnings and errors
+#export GCC_COLORS='error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quote=01'
+
+# some more ls aliases
+alias ll='ls -alF'
+alias la='ls -A'
+alias l='ls -CF'
+
+# Add an "alert" alias for long running commands.  Use like so:
+#   sleep 10; alert
+alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo error)" "$(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')"'
+
+# Alias definitions.
+# You may want to put all your additions into a separate file like
+# ~/.bash_aliases, instead of adding them here directly.
+# See /usr/share/doc/bash-doc/examples in the bash-doc package.
+
+if [ -f ~/.bash_aliases ]; then
+    . ~/.bash_aliases
+fi
+
+# enable programmable completion features (you don't need to enable
+# this, if it's already enabled in /etc/bash.bashrc and /etc/profile
+# sources /etc/bash.bashrc).
+if ! shopt -oq posix; then
+  if [ -f /usr/share/bash-completion/bash_completion ]; then
+    . /usr/share/bash-completion/bash_completion
+  elif [ -f /etc/bash_completion ]; then
+    . /etc/bash_completion
+  fi
+fi
+###### ORIGINAL ######
+
+
+
+
+
+###### ADDED PATH ######
+# install own script
+export SCRIPTS="$HOME/Scripts"
+export PATH=$PATH:$SCRIPTS/bin
+
+
+# install ruby
+export PATH="$HOME/.rbenv/bin:$PATH"
+eval "$(rbenv init -)"
+export PATH="$HOME/.rbenv/plugins/ruby-build/bin:$PATH"
+
+
+# install golang
+export GOLANG="$HOME/go"
+export PATH=$PATH:$GOLANG/bin
+
+
+# >>> conda initialize >>>
+# !! Contents within this block are managed by 'conda init' !!
+__conda_setup="$('/home/sholikinshino/anaconda3/bin/conda' 'shell.bash' 'hook' 2> /dev/null)"
+if [ $? -eq 0 ]; then
+    eval "$__conda_setup"
+else
+    if [ -f "/home/sholikinshino/anaconda3/etc/profile.d/conda.sh" ]; then
+        . "/home/sholikinshino/anaconda3/etc/profile.d/conda.sh"
+    else
+        export PATH="/home/sholikinshino/anaconda3/bin:$PATH"
+    fi
+fi
+unset __conda_setup
+# <<< conda initialize <<<
+###### ADDED PATH ######
+
+
+
+
+###### SETUP DIRECTORY BY ME ######
+# 1. cd scripts dir
+export SCRIPTS=$HOME/Scripts/bin
+alias scripts="cd $SCRIPTS"
+
+# 2. cd downloads dir
+export DOWNLOADS=$HOME/Downloads
+alias downloads="cd $DOWNLOADS"
+
+# 3. cd desktop dir
+export DESKTOP=$HOME/Desktop
+alias desktop="cd $DESKTOP"
+
+# 4. cd music dir
+export MUSIC=$HOME/Music
+alias music="cd $MUSIC"
+
+# 5. cd pictures dir
+export PICTURES=$HOME/Pictures
+alias pictures="cd $PICTURES"
+
+# 6. cd templates dir
+export TEMPLATES=$HOME/Templates
+alias templates="cd $TEMPLATES"
+
+
+### current working project ###
+# 1. cd proyek_publikasi dir
+export PROYEK_PUBLIKASI=$HOME/Desktop/Proyek_publikasi
+alias proyek_publikasi="cd $PROYEK_PUBLIKASI"
+
+## 1.a. cd proyek_plubikasi__amp dir
+export PROYEK_PUBLIKASI__AMP=$HOME/Desktop/Proyek_publikasi/2_2019__AMP_Modelling
+alias proyek_publikasi__amp="cd $PROYEK_PUBLIKASI__AMP"
+
+### 1.a.i cd proyek_plubikasi__amp_broiler dir
+export PROYEK_PUBLIKASI__AMP_BROILER=$HOME/Desktop/Proyek_publikasi/2_2019__AMP_Modelling/Database1_2019__Bioactive_peptide_broiler
+alias proyek_publikasi__amp_broiler="cd $PROYEK_PUBLIKASI__AMP_BROILER"
+
+### 1.a.ii cd proyek_plubikasi__amp_invitro dir
+export PROYEK_PUBLIKASI__AMP_INVITRO=$HOME/Desktop/Proyek_publikasi/2_2019__AMP_Modelling/Database2_2019__Antimicrobial_peptide_invitro
+alias proyek_publikasi__amp_invitro="cd $PROYEK_PUBLIKASI__AMP_INVITRO"
+
+### 1.a.iii cd proyek_plubikasi__amp_babi dir
+export PROYEK_PUBLIKASI__AMP_BABI=$HOME/Desktop/Proyek_publikasi/2_2019__AMP_Modelling/Database3_2020__Bioactive_peptide_babi
+alias proyek_publikasi__amp_babi="cd $PROYEK_PUBLIKASI__AMP_BABI"
+
+### 1.a.iv cd proyek_plubikasi__amp_review dir
+export PROYEK_PUBLIKASI__AMP_REV=$HOME/Desktop/Proyek_publikasi/2_2019__AMP_Modelling/Database4_2020__Peptide_review
+alias proyek_publikasi__amp_review="cd $PROYEK_PUBLIKASI__AMP_REV"
+
+### 1.a.v cd proyek_plubikasi__amp_disertasi dir
+export PROYEK_PUBLIKASI__AMP_DST=$HOME/Desktop/Proyek_publikasi/2_2019__AMP_Modelling/Database5_2020__Disertasi
+alias proyek_publikasi__amp_disertasi="cd $PROYEK_PUBLIKASI__AMP_DST"
+
+# 2. cd proyek_pmdsu dir
+export PROYEK_PMDSU=$HOME/Desktop/Proyek_2018-2021_PMDSU-LPPM
+alias proyek_pmdsu="cd $PROYEK_PMDSU"
+
+
+### current website project ###
+# 1. cd website project
+export PROYEK_WEB=$HOME/Desktop/Proyek_web
+alias proyek_web="cd $PROYEK_WEB"
+
+
+### current skills update ###
+# cd skill dir
+export SKILL=$HOME/Desktop/Latihan_koding
+alias skill="cd $SKILL"
+
+# cd skill__bash dir
+export SKILL__BASH=$HOME/Desktop/Latihan_koding/latihan_bash
+alias skill__bash="cd $SKILL__BASH"
+
+# cd skill__pentest dir
+export SKILL__PENTEST=$HOME/Desktop/Latihan_koding/latihan_penetration
+alias skill__pentest="cd $SKILL__PENTEST"
+
+# cd skill__machinelearning dir
+export SKILL__MACHINELEARNING=$HOME/Desktop/Latihan_koding/latihan_MachineLearning
+alias skill__machinelearning="cd $SKILL__MACHINELEARNING"
+
+# cd skills_webapp dir
+export SKILL__WEBAPP=$HOME/Desktop/Latihan_koding/latihan_django
+alias skill__webapp="cd $SKILL__WEBAPP"
+###### SETUP DIRECTORY BY ME ######
+
+
+
+
+
+###### ADDITIONAL SET UP ######
+# touchpad
+#syndaemon -i 1 -t -K -R -d
+
+
+# ERROR: ld.so: object 'libgtk3-nocsd.so.0' from LD_PRELOAD cannot be preloaded (failed to map segment from shared object): ignored.
+export LD_PRELOAD=/usr/lib/x86_64-linux-gnu/libgtk3-nocsd.so.0
+
+
+# mapping keyboard
+#xmodmap -e "keycode 108 = Mode_switch" # alt as fn
+#xmodmap -e "keycode 113 = Left NoSymbol Home"
+#xmodmap -e "keycode 114 = Right NoSymbol End"
+#xmodmap -e "keycode 111 = Up NoSymbol Prior"
+#xmodmap -e "keycode 116 = Down NoSymbol Next"
+
+# auto startup xmodmap
+xmodmap ~/.Xmodmap 
+
+###### TOUCHPAD SET UP ######
+
+
+export DISPLAY=:0

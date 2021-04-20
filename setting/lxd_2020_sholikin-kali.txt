@@ -1,0 +1,63 @@
+## Command line Kali LXD container on Ubuntu host
+# 1 - Install lxd via snap and perform initial setup:
+sudo snap install lxd
+lxd init
+
+# 2 - Launch your first Kali Linux container with
+lxc launch images:kali/current/amd64 kali
+
+# 3 - Install additional packages inside the container via
+lxc exec kali -- apt update
+lxc exec kali -- apt install kali-linux-default kali-desktop-xfce
+
+# 4 - Create non-root user - “kali” in this example:
+lxc exec kali -- adduser sholikinshino
+lxc exec kali -- usermod -aG sudo sholikinshino
+lxc exec kali -- sed -i '1 i\TERM=xterm-256color' /home/kali/.bashrc
+lxc exec kali -- sh -c "echo 'Set disable_coredump false' > /etc/sudo.conf"
+
+# 5 - Login to the new container as user “kali” via
+lxc console kali #console
+lxc exec kali bash #terminal_as_root
+lxc exec kali -- su --login sholikinshino #terminal_as_user
+
+# 6 - Container management:
+lxc start kali #start
+lxc stop kali #stop
+lxc destroy kali #remove
+
+
+
+
+
+## GUI Kali LXD container on Ubuntu host
+# 1 - Install lxd via snap and perform initial setup (if not already done):
+sudo snap install lxd
+lxd init
+
+# 2 - Launch your first Kali Linux container with
+wget https://blog.simos.info/wp-content/uploads/2018/06/lxdguiprofile.txt
+lxc profile create gui
+cat lxdguiprofile.txt | lxc profile edit gui
+lxc profile list
+lxc launch --profile default --profile gui images:kali/current/amd64 gui-kali
+lxc launch images:kali/current/amd64 kali```
+
+# 3 - Install additional packages inside the container via
+lxc exec kali -- apt update
+lxc exec kali -- apt install kali-linux-default
+
+# 4 - Create non-root user - “kali” in this example:
+lxc exec kali -- adduser sholikinshino
+lxc exec kali -- usermod -aG sudo sholikinshino
+lxc exec kali -- sed -i '1 i\TERM=xterm-256color' /home/kali/.bashrc
+lxc exec kali -- echo "export DISPLAY=:0" >> /home/sholikinshino/.bashrc
+lxc exec kali -- sh -c "echo 'Set disable_coredump false' > /etc/sudo.conf"
+
+# 5 - Start Kali Xfce panel via
+lxc exec gui-kali -- sudo -u kali xfce4-panel
+
+# 6 - Container management:
+lxc start kali #start
+lxc stop kali #stop
+lxc destroy kali #remove
