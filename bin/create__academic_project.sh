@@ -41,11 +41,13 @@ if [[ ! -d "${dest}" ]]; then
   mkdir ${dest}/work-desk/Analysis__${title_project}
   mkdir ${dest}/work-desk/Publication__${title_project}
   mkdir ${dest}/work-desk/Reference__${title_project}
-  cp -r ~/Templates/new_academic_project/Data_yyyy__Project_name.ods ${dest}/work-desk/Analysis__${title_project}
-  cp -r ~/Templates/new_academic_project/Rscript_yyyy__Project_name_metal_qualitative.R ${dest}/work-desk/Analysis__${title_project}
-  cp -r ~/Templates/new_academic_project/Rscript_yyyy__Project_name_metal_quantitative.R ${dest}/work-desk/Analysis__${title_project}
-  cp -r ~/Templates/new_academic_project/Cohort_yyyy__Project_name.R ${dest}/work-desk/Analysis__${title_project}
-  cp -r ~/Templates/new_academic_project/Cohort_yyyy__Project_name.dot ${dest}/work-desk/Analysis__${title_project}
+  cp -r ~/Templates/new_academic_project/Data_yyyy__Project_name.xlsx ${dest}/Analysis__${title_project}
+  cp -r ~/Templates/new_academic_project/Rscript_yyyy__Project_name_metal_qualitative.R ${dest}/Analysis__${title_project}
+  cp -r ~/Templates/new_academic_project/Rscript_yyyy__Project_name_metal_quantitative.R ${dest}/Analysis__${title_project}
+  cp -r ~/Templates/new_academic_project/Rscript_yyyy__Project_name_descriptive.R ${dest}/Analysis__${title_project}
+  cp -r ~/Templates/new_academic_project/Diagram_yyyy__Project_name.R ${dest}/Analysis__${title_project}
+  cp -r ~/Templates/new_academic_project/Diagram_yyyy__Project_name.dot ${dest}/Analysis__${title_project}
+  cp -r ~/Templates/new_academic_project/Prisma_diagram_yyyy__Project_name.tex ${dest}/Analysis__${title_project}
 fi
 
 ## Jika file tujuan tidak ada NEW_git_add_new_in_repo.sh maka buat file 

@@ -34,11 +34,13 @@ if [[ ! -d "${dest}" ]]; then
   mkdir ${dest}/Analysis__${title_project}
   mkdir ${dest}/Publication__${title_project}
   mkdir ${dest}/Reference__${title_project}
-  cp -r ~/Templates/new_academic_project/Data_yyyy__Project_name.ods ${dest}/Analysis__${title_project}
+  cp -r ~/Templates/new_academic_project/Data_yyyy__Project_name.xlsx ${dest}/Analysis__${title_project}
   cp -r ~/Templates/new_academic_project/Rscript_yyyy__Project_name_metal_qualitative.R ${dest}/Analysis__${title_project}
   cp -r ~/Templates/new_academic_project/Rscript_yyyy__Project_name_metal_quantitative.R ${dest}/Analysis__${title_project}
-  cp -r ~/Templates/new_academic_project/Cohort_yyyy__Project_name.R ${dest}/Analysis__${title_project}
-  cp -r ~/Templates/new_academic_project/Cohort_yyyy__Project_name.dot ${dest}/Analysis__${title_project}
+  cp -r ~/Templates/new_academic_project/Rscript_yyyy__Project_name_descriptive.R ${dest}/Analysis__${title_project}
+  cp -r ~/Templates/new_academic_project/Diagram_yyyy__Project_name.R ${dest}/Analysis__${title_project}
+  cp -r ~/Templates/new_academic_project/Diagram_yyyy__Project_name.dot ${dest}/Analysis__${title_project}
+  cp -r ~/Templates/new_academic_project/Prisma_diagram_yyyy__Project_name.tex ${dest}/Analysis__${title_project}
 else
   echo -e "${RED}The name chosen for your new script is already used.\nPlease choose another name."
   #exit
