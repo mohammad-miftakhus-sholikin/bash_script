@@ -272,4 +272,8 @@ xmodmap ~/.Xmodmap
 ###### TOUCHPAD SET UP ######
 
 
-export DISPLAY=:0
+
+###### Bioinformatics ######
+#imagej
+alias imagej="$HOME/Bioinformatics/ImageJ/ImageJ"
+###### Bioinformatics ######
