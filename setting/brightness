@@ -1,9 +1,0 @@
-[primary]
-has_secondary = False
-brightness = 66
-red = 99
-green = 99
-blue = 99
-source = eDP-1
-temperature = Default
-
