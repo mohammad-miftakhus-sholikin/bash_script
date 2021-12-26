@@ -35,6 +35,7 @@ if [[ ! -d "${dest}" ]]; then
   mkdir ${dest}/Publication__${title_project}
   mkdir ${dest}/Reference__${title_project}
   cp -r ~/Templates/new_academic_project/Data_yyyy__Project_name.xlsx ${dest}/Analysis__${title_project}
+  cp -r ~/Templates/new_academic_project/Result_yyyy__Project_name.xlsx ${dest}/Analysis__${title_project}
   cp -r ~/Templates/new_academic_project/Rscript_yyyy__Project_name_metal_qualitative.R ${dest}/Analysis__${title_project}
   cp -r ~/Templates/new_academic_project/Rscript_yyyy__Project_name_metal_quantitative.R ${dest}/Analysis__${title_project}
   cp -r ~/Templates/new_academic_project/Rscript_yyyy__Project_name_descriptive.R ${dest}/Analysis__${title_project}
