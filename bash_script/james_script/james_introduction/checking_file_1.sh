@@ -11,7 +11,7 @@
 if [ $# -ne 1 ]; then
 	echo "Useage: script3 file"
 	echo "Will determine if the file exists."
-	echo "Use it as fello: 'script file type in terminal'"
+	echo "Use it as fellow: 'script file type in terminal'"
 	exit 255
 fi
 
