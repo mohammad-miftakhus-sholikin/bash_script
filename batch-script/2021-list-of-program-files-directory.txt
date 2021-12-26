@@ -1,0 +1,44 @@
+ Volume in drive C has no label.
+ Volume Serial Number is 1E79-6D1B
+
+ Directory of C:\Program Files
+
+04/07/2021  14:32    <DIR>          .
+04/07/2021  14:32    <DIR>          ..
+15/03/2021  04:07    <DIR>          7-Zip
+31/10/2020  13:19    <DIR>          Adobe
+06/06/2021  08:10    <DIR>          BitComet
+01/12/2020  21:28    <DIR>          Common Files
+01/07/2021  11:23    <DIR>          DB Browser for SQLite
+02/07/2021  14:34    <DIR>          Docker
+07/07/2021  11:13    <DIR>          Genshin Impact
+31/10/2020  09:27    <DIR>          Git
+31/10/2020  08:38    <DIR>          Google
+30/05/2021  15:22    <DIR>          Graphviz
+02/06/2021  18:26    <DIR>          Harzing's Publish or Perish 7
+07/07/2021  17:42    <DIR>          Honkai Impact 3 sea
+11/06/2021  20:36    <DIR>          Internet Explorer
+02/06/2021  13:18    <DIR>          Java
+26/06/2021  07:28    <DIR>          KMSpico
+26/06/2021  07:22    <DIR>          Microsoft Office
+31/10/2020  17:26    <DIR>          Microsoft Office 15
+11/06/2021  16:23    <DIR>          Microsoft Update Health Tools
+07/12/2019  16:14    <DIR>          ModifiableWindowsApps
+22/10/2020  04:26    <DIR>          MSBuild
+29/06/2021  11:51    <DIR>          Npcap
+23/06/2021  07:35    <DIR>          NVIDIA Corporation
+30/04/2021  08:14    <DIR>          R
+22/10/2020  04:26    <DIR>          Reference Assemblies
+02/06/2021  15:55    <DIR>          RStudio
+31/10/2020  13:01    <DIR>          Vensim
+03/02/2021  12:02    <DIR>          Windows Defender
+13/02/2021  07:55    <DIR>          Windows Mail
+07/12/2019  16:52    <DIR>          Windows Multimedia Platform
+07/12/2019  16:49    <DIR>          Windows NT
+03/02/2021  12:02    <DIR>          Windows Photo Viewer
+07/12/2019  16:52    <DIR>          Windows Portable Devices
+07/12/2019  16:31    <DIR>          Windows Security
+07/12/2019  16:31    <DIR>          WindowsPowerShell
+31/10/2020  09:16    <DIR>          WinRAR
+               0 File(s)              0 bytes
+              37 Dir(s)  260.295.860.224 bytes free

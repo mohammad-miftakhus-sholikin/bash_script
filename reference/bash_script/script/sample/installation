@@ -1,0 +1,113 @@
+#!/bin/bash
+
+
+function quit() {
+exit
+}
+
+
+function automatic() {
+echo ""
+echo "Automatic Installation of LabImage"
+echo "First the Codemeter Runtime will be installed. It is needed for the license management"
+installCodeMeter
+installLabImage
+}
+
+
+function custom() {
+echo ""
+echo "Custom Installation of LabImage"
+echo "First the Codemeter Runtime will be installed."
+echo "It is needed for the license management. Without Installation of CodeMeter Runtime LabImage will only run as demo!"
+
+while true; do
+echo ""
+read -p "Do you agree with the Installation of Codemeter Runtime? [Y/N]" yn
+case $yn in
+[Yy]* ) installCodeMeter; break;;
+[Nn]* ) echo "Without Codemeter Runtime LabImage can only be used as demo!"; break;;
+*) echo "Please answer yes or no.";;
+esac
+done
+
+echo ""
+echo "After successful Instalation LabImage will be started."
+echo "The first Start of LabImage must be done with administrator rights!"
+
+while true; do
+echo ""
+read -p "Do you agree with the Installation LabImage? [Y/N]" yn
+case $yn in
+[Yy]* ) installLabImage; break;;
+[Nn]* ) echo "Installation canceled!"; break;;
+*) echo "Please answer yes or no.";;
+esac
+done
+}
+
+
+function installCodeMeter() {
+echo ""
+echo "Installing CodeMeter Runtime"
+sudo dpkg -i codemeter_6.50.2640.503_amd64.deb
+}
+
+
+function installLabImage() {
+echo ""
+echo "LabImage will now be installed."
+sudo sudo dpkg -i labimage_cc_amd64.deb
+sudo apt-get -f install
+echo ""
+echo "LabImage will now be started with administrator rights"
+sudo /usr/share/labimage/LabImage
+}
+
+
+function installApplications() {
+echo "The LabImage Platform will be installed on your computer."
+echo "Choose one of the following options!"
+echo "Press '1' for automatic Installation"
+echo "Press '2' for Custom Installation and"
+echo "Press '0' to cancel Installetion"
+
+input=4
+
+while [ $input -eq 4 ]; do
+
+# read user input
+read input
+
+# bash nested if/els
+
+if [ $input -eq 1 ] ; then
+automatic
+else
+if [ $input -eq 2 ] ; then
+custom
+else
+if [ $input -eq 0 ] ; then
+quit
+else
+echo "Please make a choice between 1-3 !"
+echo "1. automatic installation"
+echo "2. custom installation"
+echo "0. cancel installation"
+echo -n "Please choose [1,2 or 0] "
+echo
+input=4
+fi
+fi
+fi
+
+done
+}
+
+
+MACHINE_TYPE=`getconf LONG_BIT`
+if [ ${MACHINE_TYPE} == '64' ]; then
+installApplications
+else
+echo You have a installed 32bit-System. Please choose the labimage_*_i386.tar.gz package
+fi
